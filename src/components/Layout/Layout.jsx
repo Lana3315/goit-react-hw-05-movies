@@ -1,7 +1,7 @@
 import {NavLink, Outlet } from 'react-router-dom'
 export const Layout = () => {
   return (
-    <div>
+    <>
       <header>
     <ul>
        <li> <NavLink to="/">Home page</NavLink></li>
@@ -11,7 +11,7 @@ export const Layout = () => {
       <main>
         <Outlet />
         </main>
-      </div>
+      </>
   )
 }
 export default Layout;
