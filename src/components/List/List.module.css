@@ -1,0 +1,29 @@
+.list {
+  margin-top: 30px;
+}
+.item {
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+}
+.link:hover {
+  color: rgb(26, 25, 25);
+}
+.item::before {
+  content: '';
+  display: block;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-color: rgb(31, 30, 30);
+}
+.item:not(:last-child) {
+  margin-bottom: 5px;
+}
+.link {
+  padding: 5px 5px;
+  text-decoration: none;
+  color: #282828;
+}

@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.info {
+  margin-top: 10px;
+}

@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+.input {
+  margin-right: 10px;
+  padding: 0px 10px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  width: 300px;
+  outline: none;
+  border-bottom: 2px solid rgb(41, 39, 39);
+}
+
+.btn {
+  background: transparent;
+  color: black;
+  border-color: white;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 26px;
+  border-radius: 100px;
+  border: 3px solid black;
+  text-decoration: none;
+  cursor: pointer;
+}

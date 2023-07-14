@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(30, 28, 28);
+  height: 70px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.linkHome {
+  text-decoration: none;
+  color: aliceblue;
+}
+.linkMovies {
+  text-decoration: none;
+  color: aliceblue;
+}

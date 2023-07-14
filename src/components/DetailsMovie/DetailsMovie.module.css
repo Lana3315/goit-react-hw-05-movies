@@ -1,0 +1,20 @@
+.wrap {
+  display: flex;
+  color: #282828;
+}
+.img {
+  margin-right: 20px;
+}
+.info {
+  padding-top: 10px;
+}
+.title {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.year {
+  margin-left: 5px;
+}
+.subtitle {
+  margin: 10px 0px;
+}
