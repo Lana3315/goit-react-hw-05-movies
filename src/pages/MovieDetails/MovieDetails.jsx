@@ -10,6 +10,7 @@ import DetailsMovie from 'components/DetailsMovie/DetailsMovie';
 const MovieDetails = () => {
   const [data, setData] = useState({});
   const [statusPage, setStatusPage] = useState(status.START);
+  const [searchPageLink, setSearchPageLink] = useState('/'); 
 
   const { movieId } = useParams();
   const locRef = useRef(null);
@@ -17,6 +18,8 @@ const MovieDetails = () => {
 
   useEffect(() => {
     locRef.current = location.state?.from ?? '/';
+    setSearchPageLink(locRef.current); 
+
     const dataConversion = obj => {
       const genres = obj.genres.map(genre => genre.name).join(', ');
       const year = obj['release_date'].split('-')[0];
@@ -44,28 +47,22 @@ const MovieDetails = () => {
       }
     };
     fetch();
-  }, [location.state?.from,movieId]);
+  }, [location.state?.from, movieId]);
 
   return (
     <Section>
       {statusPage === status.FINISH && (
         <>
-          <Link to={locRef.current} className={css.btnBack}>
-            {`<--Go to back`}
-          </Link>
+          <Link to={searchPageLink} className={css.btnBack}>{`<--Go to back`}</Link>
           <DetailsMovie data={data} />
           <div>
             <h3 className={css.subtitleAdd}>Additional information</h3>
             <ul className={css.list}>
               <li className={css.item}>
-                <NavLink to={'cast'} className={css.linkAddIfo}>
-                  Cast
-                </NavLink>
+                <NavLink to={'cast'} className={css.linkAddIfo}>Cast</NavLink>
               </li>
               <li className={css.item}>
-                <NavLink to={'reviews'} className={css.linkAddIfo}>
-                  Reviews
-                </NavLink>
+                <NavLink to={'reviews'} className={css.linkAddIfo}>Reviews</NavLink>
               </li>
             </ul>
           </div>
@@ -73,7 +70,7 @@ const MovieDetails = () => {
         </>
       )}
       {statusPage === status.LOADING && <MovieDetailsSkeleton />}
-      {statusPage === status.EROR && <p>Eror</p>}
+      {statusPage === status.EROR && <p>Error</p>}
     </Section>
   );
 };

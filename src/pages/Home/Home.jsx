@@ -31,7 +31,7 @@ const Home = () => {
     <Section>
       <h1 className={css.title}>Trending today</h1>
       {statusPage === status.FINISH && <List data={data} isHome={true} />}
-      {statusPage === status.LOADING && <ListSkeleton />} {/* Скелетон надо сделать */}
+      {statusPage === status.LOADING && <ListSkeleton />} 
       {statusPage === status.EROR && <p>Erorr</p>}
     </Section>
   );
