@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import Section from '../../components/Section/Section';
 import MovieDetailsSkeleton from './MovieDetailsSkeleton';
@@ -10,15 +10,13 @@ import DetailsMovie from 'components/DetailsMovie/DetailsMovie';
 const MovieDetails = () => {
   const [data, setData] = useState({});
   const [statusPage, setStatusPage] = useState(status.START);
-  const [searchPageLink, setSearchPageLink] = useState('/'); 
 
   const { movieId } = useParams();
-  const locRef = useRef(null);
   const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+  
 
   useEffect(() => {
-    locRef.current = location.state?.from ?? '/';
-    setSearchPageLink(locRef.current); 
 
     const dataConversion = obj => {
       const genres = obj.genres.map(genre => genre.name).join(', ');
@@ -53,16 +51,19 @@ const MovieDetails = () => {
     <Section>
       {statusPage === status.FINISH && (
         <>
-          <Link to={searchPageLink} className={css.btnBack}>{`<--Go to back`}</Link>
+         
+        <Link to={backLinkHref} className={css.btnBack}>
+          Go back<span>.</span>
+        </Link>
           <DetailsMovie data={data} />
           <div>
             <h3 className={css.subtitleAdd}>Additional information</h3>
             <ul className={css.list}>
               <li className={css.item}>
-                <NavLink to={'cast'} className={css.linkAddIfo}>Cast</NavLink>
+                <NavLink to={'cast'} state={{from: backLinkHref}} className={css.linkAddIfo}>Cast</NavLink>
               </li>
               <li className={css.item}>
-                <NavLink to={'reviews'} className={css.linkAddIfo}>Reviews</NavLink>
+                <NavLink to={'reviews'} className={css.linkAddIfo} state={{from: backLinkHref}}>Reviews</NavLink>
               </li>
             </ul>
           </div>
